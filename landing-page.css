@@ -15,7 +15,7 @@
     }
 }
 .hero-bg {
-    background: url("../img/hero-bg.jpg") no-repeat center fixed;
+    background: url("hero-bg.jpg") no-repeat center fixed;
     background-size: cover;
     height: 500px;
     position: relative;
