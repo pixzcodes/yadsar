@@ -10,9 +10,15 @@
     --red-alert-color: #eb6f92;
 }
 
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/Roboto-Regular.ttf');
+}
+
 html{
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
+    font-family: 'Roboto', 'Times New Roman', Times, serif;
 }
 
 header {
@@ -23,13 +29,68 @@ header {
 }
 
 header h1 {
+    padding-left: 25px;
     flex-grow: 0;
 }
-
-#menu {
-    background-color: var(--iris);
-    border: solid 1px var(--red-alert-color);
-    min-width: 40px;
-    min-height: 40px;
-    margin: 10px;
+body h3 {
+    font-size: 32px;
+    padding: 20px 10vw;
+    text-align: center;
 }
+.mainbody {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+body p {
+    font-size: 18px;
+    max-width: 1200px;
+    padding: 0px 10vw ;
+    margin: 15px 30px;
+}
+
+.menu {
+    min-width: 50px;
+    min-height: 50px;
+    margin: 5px;
+}
+
+.menuback {
+    width: 60px;
+    min-height: 60px;
+    margin: 25px;
+    border: 3px solid var(--red-alert-color);
+    border-radius: 20px;
+    transition: 0.3s;
+}
+.menuback:hover {
+    box-shadow: 0px 0px 15px var(--red-alert-color);
+}
+
+.sidenav{
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: var(--border-color);
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--main-text-color);
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    text-shadow: 0px 0px 10px var(--iris);
+}
+
