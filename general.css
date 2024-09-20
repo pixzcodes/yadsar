@@ -26,34 +26,66 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 header h1 {
     padding-left: 25px;
     flex-grow: 0;
 }
-body h3 {
-    font-size: 32px;
-    padding: 20px 10vw;
-    text-align: center;
+
+.contentcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 .mainbody {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    max-width: 800px;
+    margin-bottom: 20vh;
 }
-body p {
-    font-size: 18px;
-    max-width: 1200px;
-    padding: 0px 10vw ;
-    margin: 15px 30px;
+.mainbody p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 1em 2em;
+    line-height: 1.75em;
+}
+.mainbody h2 {
+    font-size: 3rem;
+    padding: 1em 1em;
+    text-align: center;
+}
+.mainbody h3 {
+    font-size: 2.5rem;
+    padding: 20px 10vw;
+    text-align: center;
+}
+.mainbody h4 {
+    font-size: 1.5rem;
+    margin: 1em 2em 0em 2em;
+    align-self: flex-start;
+}
+@media  screen and (max-width: 800px) {
+    .mainbody p {
+        padding: 0px 5vw;
+    }
 }
 
 .menu {
     min-width: 50px;
     min-height: 50px;
     margin: 5px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+.menu:hover {
+    box-shadow: 0px 0px 15px var(--iris);
 }
 
 .menuback {
@@ -72,7 +104,6 @@ body p {
     height: 100%;
     width: 0px;
     position: fixed;
-    z-index: 1;
     top: 0;
     right: 0;
     background-color: var(--border-color);
@@ -80,8 +111,10 @@ body p {
     padding-top: 20px;
     transition: 0.5s;
 }
-
-.sidenav a {
+p a {
+    color: var(--red-alert-color);
+}
+.sidenav a, ul li a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -90,7 +123,13 @@ body p {
     transition: 0.3s;
 }
 
-.sidenav a:hover {
+.sidenav a:hover, ul li a:hover {
     text-shadow: 0px 0px 10px var(--iris);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
