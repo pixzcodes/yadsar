@@ -27,9 +27,205 @@
             <h4>What is Big O Notation?</h4>
             <p>
                 Big O notation is a measurement. Specifically for the time it takes an algorithm to complete
-                as the input it recieves 
+                as the input it recieves Big O notation is a measurement, specifically for the time it takes an 
+                algorithm to complete a run as it receives more input. With this measurement we can pick and 
+                choose which algorithms we would like to use in our programs based on each algorithm’s performance. 
             </p>
-            <h4>some heading</h4>
+            <p>
+                Big O is an asymptotic notation that is used to describe the running time of an algorithm, 
+                Big O describes the upper bound of the algorithm. In other words, the worst-case scenario for 
+                how the algorithm will perform. Other asymptotic notations include Omega Notation (the lower bound) 
+                and Theta Notation (the average), this lesson however will focus on Big O as it is the most 
+                prevalent and arguably the most important to learn. We want our programs to be the best they 
+                can be, even in the worst-case scenario. 
+            </p>
+            <p>
+                Big O can be difficult to grasp at first but the main thing to understand is that it isn’t
+                 a piece of code you can insert into your program that tells you how efficient it is. Big O 
+                 is theoretical measurement calculated by measuring how the number of steps changes as the 
+                 input of the program grows. This will make a bit more sense in a little bit. First, we will 
+                 go over the Big O Notations in order from fastest to slowest: 
+                <ul class="big-o-list">
+                    <li>O(1) – Constant Complexity</li>
+                    <li>O(log N) – Logarithmic Complexity</li>
+                    <li>O(N) – Linear Complexity</li>
+                    <li>O(N log N) – N x log N Complexity</li>
+                    <li>O(n<sup>2</sup>) – Quadratic Complexity</li>
+                    <li>O(n<sup>3</sup>) – Cubic Complexity</li>
+                    <li>O(2<sup>n</sup>) – Exponential Complexity</li>
+                    <li>O(N!) – Factorial Complexity</li>
+                </ul>
+            </p>
+            <h4>O(1) - Constant Complexity</h4>
+            <p>
+                O(1), or Constant Complexity is the simplest to understand. If we have an array like the one below:
+            </p>
+            <code>
+                array = [ 1, 2, 3, 4 ];
+            </code>
+            <p>
+                And if we wanted to access any of the elements in the array, we would use the index. 
+                For example, if we wanted to get the number 3, we would look up index 2 (remember 
+                arrays in most languages start at in index of 0). We can get our information in one step 
+                of the program. If we increase the size of our array:
+            </p>
+            <code>
+                array = [ 1, 2, 3, 4, 5, 6, 7 ];
+            </code>
+            <p>
+                And we wanted to access one of the additional entries, like the number 6, we would use 
+                index 5. This is still one step of the program. Therefore, no matter how much we increase 
+                the array we can always get the value that we want in one step of the program. It takes just
+                 as many steps to fetch the value if the array has 3 elements or 1000 elements. That is what
+                  Constant Complexity means, no matter how many inputs there are, we can <u>always</u> generate our 
+                  output in one step of the program. This is as good as it gets, and most programs will not be
+                    this efficient unless they are incredibly simple. 
+            </p>
+            <p>
+                Technically speaking, what we just described isn’t one step in the program. The computer 
+                still has to look up where the memory for the array is and where that value is stored. 
+                However, we count it as one step to keep it simple. What matters is the program is just 
+                as efficient with a small number of inputs versus a large number of inputs.
+            </p>
+            <p>
+                Now let's look at the next fastest complexity. 
+            </p>
+            <h4>O(log N) - Logarithmic Complexity</h4>
+            <p>
+                Logarithmic Complexity means that the number of steps in the program only 
+                increases by 1 as the amount of input doubles. That means that the program only 
+                takes 1 extra step when we go from 50 elements in our array to 100 elements. 
+            </p>
+            <p>
+                One algorithm that exemplifies this behavior is Binary Search. Binary Search only 
+                works with sorted arrays, you’ll see why pretty quickly. 
+            </p>
+            <p>
+                Binary Search is used to find a specific value. It takes the number in the middle of 
+                the array and checks if it is that value. If it does not match, then the algorithm 
+                determines if the value it is looking at is less than or greater than the value it is 
+                looking for. Whichever it decides, it truncates (cuts off) the irrelevant half of the 
+                array. This of course only works if the array is sorted because the algorithm assumes 
+                that the values less than or greater than the value it was looking at are all less than 
+                or greater than it. Let’s look at an example, if we have an array of numbers that are all 
+                sorted from least to greatest like so:
+            </p>
+            <code>
+                array = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+            </code>
+            <p>
+                And we wanted to find the value 2, the algorithm would check the value 5 which 
+                is in the direct middle of the array. Since that value is not what we are looking 
+                for, it cuts off the part of the array that the value could not be in since the array 
+                is sorted. Imagine the array now looks like this:
+            </p>
+            <code>
+                array = [ 1, 2, 3, 4, -, -, -, -, - ];
+            </code>
+            <p>
+                Then it will start again, looking at the middle number (if the array is an even number 
+                of items, it guesses which middle number), if that value is not the one we are looking for 
+                it truncates the array and starts again. 
+            </p>
+            <p>
+                This continues until we have either found the value or we have only one value left. When 
+                we have only one value left, we perform a check. If the check is true then we have found it, 
+                if not then we determine that the array does not contain the value. 
+            </p>
+            <p>
+                You’ll notice that if we find the value before, we get to the end of the algorithm 
+                then technically the algorithm is more efficient. Remember however that Big O Notation 
+                works off the worst-case scenario, so we assume that we always get to the end of the algorithm. 
+            </p>
+            <p>
+                Binary Search is incredibly efficient because it halves the size of the array every single 
+                time. If we have an array size of 1, the algorithm completes in one step. If the array is a 
+                size of 2, we complete it in 2 steps. If the array is a size of 3, however, we still complete 
+                in 2 steps. We only increase the number of steps when the input is doubled. So, a size of 4 would 
+                take 3 steps, 8 would take 4, and so on. 
+            </p>
+            <p>
+                Now let’s look at Linear Complexity. 
+            </p>
+            <h4>O(N) - Linear Complexity</h4>
+            <p>
+                Linear Complexity is by far the easiest to understand. Linear Complexity just tells 
+                us that the number of steps grows at the same rate as the number of inputs. So, if we 
+                have 100 inputs, it will take 100 steps, 5 inputs, 5 steps. This is like if we have a 
+                loop that checks each index of an array from start to finish. Remember that Big O looks 
+                at the worst-case scenario, so we always assume the algorithm will run its full course. 
+            </p>
+            <h4>O(N log N) - N x log N Complexity</h4>
+            <p>
+                This complexity isn’t as difficult to understand as it may first seem. This notation 
+                basically says that we have an algorithm that repeatedly cuts an array in half, like 
+                O(log N), but each of those halves are processed by another algorithm with a complexity 
+                of O(N). The most common example of this complexity is the merge sort algorithm. Merge 
+                sort essentially keeps cutting the array in half until it ends up with each item in its 
+                own sub-array, then merges them together in ascending order. Merge sort is a very common 
+                way to sort a list in order to perform a Binary Search. 
+            </p>
+            <p>
+                However, not all algorithms that have a O(N log N) complexity have a nested algorithm 
+                inside, it just so happens that this is the most common implementation. 
+            </p>
+            <h4>O(n<sup>2</sup>) - Quadratic Complexity</h4>
+            <p>
+                If you have ever written your own code, there is a very high probability that you 
+                have written a Quadratic Complexity algorithm.
+            </p>
+            <p>
+                Quadratic Complexity is most commonly seen when you are looping over an array and 
+                then in each loop you loop through it again. For example:
+            </p>
+            <code>
+                <span>function sumArray(arr) {</span>
+                <span class="tab2">let sum = 0;</span>
+                <span class="tab2">let sum2 = 0;</span>
+                <span class="tab2">for (let i = 0; i < arr.length; i++) {</span>
+                <span class="tab4">sum += arr[i];</span>
+                <span class="tab4">for (let j = 0; j < arr.length; j++) {</span>
+                <span class="tab8">sum2 += arr[j];</span>
+                <span class="tab4">}</span>
+                <span class="tab2">}</span>
+                <span class="tab2">return sum + sum2;</span>
+                <span>}</span>
+            </code>
+            <p>
+                If our array contains 5 values, our algorithm takes 5<sup>2</sup>, or 25, steps. This very 
+                quickly gets out of hand and is typically not suitable for large sets of data. You 
+                can get away with it in small sets of data, but it is not advised for professional work. 
+            </p>
+            <h4>O(n<sup>3</sup>) - Cubic Complexity</h4>
+            <p>
+                Cubic Complexity is like Quadratic Complexity with an extra nested loop. That step amount 
+                for 5 values just went from 25 steps to 125 steps (yikes). Again, algorithms of this 
+                complexity are not recommended for large data sets, as you might figure by now, the same 
+                goes for the next and slowest complexity. 
+            </p>
+            <h4>O(2<sup>n</sup>) - Exponential</h4>
+            <p>
+                Exponential Complexity means that our number of steps doubles whenever we increase 
+                our input by 1. Think like the opposite of O(log N). You want to avoid algorithms of 
+                this complexity, if at all possible. Unless you like waiting for your data to be processed.
+            </p>
+            <h4>O(N!) - Factorial Complexity</h4>
+            <p>
+                If you’ve been paying attention in mathematics class, then you’ll know that a factorial is 
+                the product of the sequence of integers. Basically, the factorial of 3 (3!) is 3 * 2 * 1, 
+                which is 6. The factorial of 8? 40,320. The factorial of 9? 362,880. As you can see, this 
+                is increasing worse with each additional input. This complexity is by far the worst but 
+                sometimes it is a necessary evil because some problems cannot be calculated without it. 
+            </p>
+            <h4>Why Big O Notation?</h4>
+            <p>
+                Why is Big O important to understand as a software engineer? Big O lets us differentiate 
+                algorithms and categorize them based on worst-case efficiency. Knowing the worst-case 
+                scenario of our code lets us confidently describe how our code will perform. 
+            </p>
+            <p>
+                It’s better to assume the worst and turn out better than to assume the average and turn out worse. 
+            </p>
         </div>
     </div>
     
