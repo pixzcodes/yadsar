@@ -159,7 +159,10 @@ code {
 
 }
 
-
+div.references {
+    text-indent: -4rem;
+    padding-left: 4rem;
+}
 
 @media  screen and (max-width: 800px) {
     .mainbody p {
